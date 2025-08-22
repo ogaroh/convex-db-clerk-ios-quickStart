@@ -75,3 +75,6 @@ sampleData.jsonl          # Sample data
 - [SwiftUI Docs](https://developer.apple.com/documentation/swiftui)
 
 ## Screenshots
+### Light Mode
+
+### Dark Mode
