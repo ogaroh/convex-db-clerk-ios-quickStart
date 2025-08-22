@@ -7,26 +7,27 @@
 
 import SwiftUI
 import SwiftData
+import Clerk
 
 @main
 struct ConvexQuickStartApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-
+    @State private var clerk = Clerk.shared
+    
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ZStack {
+                if(clerk.isLoaded) {
+                    ContentView()
+                } else {
+                    ProgressView()
+                }
+            }
+            .environment(clerk)
+            .task {
+                clerk.configure(publishableKey: "pk_test_aW50ZXJuYWwtbWFybGluLTUzLmNsZXJrLmFjY291bnRzLmRldiQ") // TODO: check this
+                try? await clerk.load()
+            }
         }
-        .modelContainer(sharedModelContainer)
     }
 }
