@@ -34,6 +34,9 @@ sampleData.jsonl          # Sample data
 	```sh
 	git clone <repo-url>
 	cd ConvexQuickStart
+    touch .env.local
+    echo "CONVEX_DEPLOYMENT=<convex-deployment>" >> .env.local 
+    echo "CONVEX_URL=<convex-url>" >> .env.local 
 	```
 
 2. **Convex Backend**
@@ -70,3 +73,5 @@ sampleData.jsonl          # Sample data
 - [Convex Docs](https://docs.convex.dev/)
 - [Clerk Docs](https://clerk.com/docs)
 - [SwiftUI Docs](https://developer.apple.com/documentation/swiftui)
+
+## Screenshots
